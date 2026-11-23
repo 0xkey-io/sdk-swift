@@ -1,0 +1,6 @@
+// Copy to Config/Local.xcconfig (git-ignored) and fill in your app's values.
+DEMO_BUNDLE_ID = com.yourcompany.wallet
+DEVELOPMENT_TEAM = ABCDE12345
+ZEROXKEY_ORGANIZATION_ID = <parent organization ID>
+ZEROXKEY_AUTH_PROXY_CONFIG_ID = <Auth Proxy config ID>
+ZEROXKEY_RP_ID = wallet.yourcompany.com

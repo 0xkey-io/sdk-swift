@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "generator": "Scripts/vectors/gen-fixtures.mjs",
+    "generatorCommand": "node Scripts/vectors/gen-fixtures.mjs <outDir>",
+    "sdk_js_commit": "850ef7ef68287d481655b39ab555f181abdc54f8",
+    "generatedAt": "2026-11-19T20:56:08.390Z",
+    "fixture": "webauthn-stamp",
+    "note": "WebauthnStamper.stamp from packages/webauthn-stamper/dist with navigator.credentials.get mocked; authenticator side is synthetic"
+  },
+  "cases": [
+    {
+      "rpId": "login.example.org",
+      "payload": "{\"organizationId\":\"00000000-0000-4000-8000-000000000001\"}",
+      "capturedRpId": "login.example.org",
+      "challengeHex": "64326435633337393230626664653638633862383464353237323162373736346139396664383830353666643834613937643661326230326661626162373034",
+      "challengeUtf8": "d2d5c37920bfde68c8b84d52721b7764a99fd88056fd84a97d6a2b02fabab704",
+      "credentialIdHex": "aae9fb62a6549a27b2a302c65498e1d0",
+      "authenticatorDataHex": "5b40af0b05646b525052d6193a6af3fbf310a9f08f54170f147ba5eedae846bb0500000000",
+      "clientDataJSON": "{\"type\":\"webauthn.get\",\"challenge\":\"ZDJkNWMzNzkyMGJmZGU2OGM4Yjg0ZDUyNzIxYjc3NjRhOTlmZDg4MDU2ZmQ4NGE5N2Q2YTJiMDJmYWJhYjcwNA\",\"origin\":\"https://login.example.org\",\"crossOrigin\":false}",
+      "signatureHex": "30460221009765798dc6f2a09d0758887e1f175581db156384f621bfaf2dfb5048beb69037022100fe34532f6f1592a9fa751d4845867fe55ffda20efff78c8dfeb014f797d3bd63",
+      "passkeyPublicKeyUncompressed": "040b336834c05a8fea89b700d0a1c4f6cefc64ddb401471c10d4ebd2f9af7c1e19642ad310093b90c144b886d34c90fb02d1a947f5bbb7354f77bb77fa1752c6d8",
+      "stampHeaderName": "X-Stamp-Webauthn",
+      "stampHeaderValue": "{\"authenticatorData\":\"W0CvCwVka1JQUtYZOmrz-_MQqfCPVBcPFHul7troRrsFAAAAAA\",\"clientDataJson\":\"eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiWkRKa05XTXpOemt5TUdKbVpHVTJPR000WWpnMFpEVXlOekl4WWpjM05qUmhPVGxtWkRnNE1EVTJabVE0TkdFNU4yUTJZVEppTURKbVlXSmhZamN3TkEiLCJvcmlnaW4iOiJodHRwczovL2xvZ2luLmV4YW1wbGUub3JnIiwiY3Jvc3NPcmlnaW4iOmZhbHNlfQ\",\"credentialId\":\"qun7YqZUmieyowLGVJjh0A\",\"signature\":\"MEYCIQCXZXmNxvKgnQdYiH4fF1WB2xVjhPYhv68t-1BIvraQNwIhAP40Uy9vFZKp-nUdSEWGf-Vf_aIO__eMjf6wFPeX071j\"}"
+    },
+    {
+      "rpId": "login.example.org",
+      "payload": "{\"type\":\"ACTIVITY_TYPE_SIGN_RAW_PAYLOAD_V2\",\"timestampMs\":\"1763500000000\",\"organizationId\":\"00000000-0000-4000-8000-000000000001\",\"parameters\":{\"signWith\":\"0x0000000000000000000000000000000000000001\",\"payload\":\"héllo 世界\",\"encoding\":\"PAYLOAD_ENCODING_TEXT_UTF8\",\"hashFunction\":\"HASH_FUNCTION_SHA256\"}}",
+      "capturedRpId": "login.example.org",
+      "challengeHex": "31346464306235643239653932656235366236386234663736326139646332343536363933353661326133316631663032653164313832623964346566383933",
+      "challengeUtf8": "14dd0b5d29e92eb56b68b4f762a9dc245669356a2a31f1f02e1d182b9d4ef893",
+      "credentialIdHex": "aae9fb62a6549a27b2a302c65498e1d0",
+      "authenticatorDataHex": "5b40af0b05646b525052d6193a6af3fbf310a9f08f54170f147ba5eedae846bb0500000000",
+      "clientDataJSON": "{\"type\":\"webauthn.get\",\"challenge\":\"MTRkZDBiNWQyOWU5MmViNTZiNjhiNGY3NjJhOWRjMjQ1NjY5MzU2YTJhMzFmMWYwMmUxZDE4MmI5ZDRlZjg5Mw\",\"origin\":\"https://login.example.org\",\"crossOrigin\":false}",
+      "signatureHex": "30450221008ec8a27dd82cb119278856c13c4b5ebac1e6f42c633d3873afc63f9d7b0b83e5022003f480d7de25a3389d3a1eda646a92f6b06dd12faeb06b60d870e463464d7ec3",
+      "passkeyPublicKeyUncompressed": "040b336834c05a8fea89b700d0a1c4f6cefc64ddb401471c10d4ebd2f9af7c1e19642ad310093b90c144b886d34c90fb02d1a947f5bbb7354f77bb77fa1752c6d8",
+      "stampHeaderName": "X-Stamp-Webauthn",
+      "stampHeaderValue": "{\"authenticatorData\":\"W0CvCwVka1JQUtYZOmrz-_MQqfCPVBcPFHul7troRrsFAAAAAA\",\"clientDataJson\":\"eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiTVRSa1pEQmlOV1F5T1dVNU1tVmlOVFppTmpoaU5HWTNOakpoT1dSak1qUTFOalk1TXpVMllUSmhNekZtTVdZd01tVXhaREU0TW1JNVpEUmxaamc1TXciLCJvcmlnaW4iOiJodHRwczovL2xvZ2luLmV4YW1wbGUub3JnIiwiY3Jvc3NPcmlnaW4iOmZhbHNlfQ\",\"credentialId\":\"qun7YqZUmieyowLGVJjh0A\",\"signature\":\"MEUCIQCOyKJ92CyxGSeIVsE8S166web0LGM9OHOvxj-dewuD5QIgA_SA194lozidOh7aZGqS9rBt0S-usGtg2HDkY0ZNfsM\"}"
+    },
+    {
+      "rpId": "wallet.example.com",
+      "payload": "{\"organizationId\":\"00000000-0000-4000-8000-000000000001\"}",
+      "capturedRpId": "wallet.example.com",
+      "challengeHex": "64326435633337393230626664653638633862383464353237323162373736346139396664383830353666643834613937643661326230326661626162373034",
+      "challengeUtf8": "d2d5c37920bfde68c8b84d52721b7764a99fd88056fd84a97d6a2b02fabab704",
+      "credentialIdHex": "359a70d7963584d73b1925382a3edb6b",
+      "authenticatorDataHex": "eca1ab56a47b16311220e4d86e60348b492f7cb46895290e176e70359742e41c0500000000",
+      "clientDataJSON": "{\"type\":\"webauthn.get\",\"challenge\":\"ZDJkNWMzNzkyMGJmZGU2OGM4Yjg0ZDUyNzIxYjc3NjRhOTlmZDg4MDU2ZmQ4NGE5N2Q2YTJiMDJmYWJhYjcwNA\",\"origin\":\"https://wallet.example.com\",\"crossOrigin\":false}",
+      "signatureHex": "3046022100a608a8d2fb2045924f806010d785d24cdc0826202338de47555ce6f24869f072022100d8f16e196aa59c7450af5b0bdc4d38ebc40ffa9ea71f169421f49e3017e5e084",
+      "passkeyPublicKeyUncompressed": "040b336834c05a8fea89b700d0a1c4f6cefc64ddb401471c10d4ebd2f9af7c1e19642ad310093b90c144b886d34c90fb02d1a947f5bbb7354f77bb77fa1752c6d8",
+      "stampHeaderName": "X-Stamp-Webauthn",
+      "stampHeaderValue": "{\"authenticatorData\":\"7KGrVqR7FjESIOTYbmA0i0kvfLRolSkOF25wNZdC5BwFAAAAAA\",\"clientDataJson\":\"eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiWkRKa05XTXpOemt5TUdKbVpHVTJPR000WWpnMFpEVXlOekl4WWpjM05qUmhPVGxtWkRnNE1EVTJabVE0TkdFNU4yUTJZVEppTURKbVlXSmhZamN3TkEiLCJvcmlnaW4iOiJodHRwczovL3dhbGxldC5leGFtcGxlLmNvbSIsImNyb3NzT3JpZ2luIjpmYWxzZX0\",\"credentialId\":\"NZpw15Y1hNc7GSU4Kj7baw\",\"signature\":\"MEYCIQCmCKjS-yBFkk-AYBDXhdJM3AgmICM43kdVXObySGnwcgIhANjxbhlqpZx0UK9bC9xNOOvED_qepx8WlCH0njAX5eCE\"}"
+    },
+    {
+      "rpId": "wallet.example.com",
+      "payload": "{\"type\":\"ACTIVITY_TYPE_SIGN_RAW_PAYLOAD_V2\",\"timestampMs\":\"1763500000000\",\"organizationId\":\"00000000-0000-4000-8000-000000000001\",\"parameters\":{\"signWith\":\"0x0000000000000000000000000000000000000001\",\"payload\":\"héllo 世界\",\"encoding\":\"PAYLOAD_ENCODING_TEXT_UTF8\",\"hashFunction\":\"HASH_FUNCTION_SHA256\"}}",
+      "capturedRpId": "wallet.example.com",
+      "challengeHex": "31346464306235643239653932656235366236386234663736326139646332343536363933353661326133316631663032653164313832623964346566383933",
+      "challengeUtf8": "14dd0b5d29e92eb56b68b4f762a9dc245669356a2a31f1f02e1d182b9d4ef893",
+      "credentialIdHex": "359a70d7963584d73b1925382a3edb6b",
+      "authenticatorDataHex": "eca1ab56a47b16311220e4d86e60348b492f7cb46895290e176e70359742e41c0500000000",
+      "clientDataJSON": "{\"type\":\"webauthn.get\",\"challenge\":\"MTRkZDBiNWQyOWU5MmViNTZiNjhiNGY3NjJhOWRjMjQ1NjY5MzU2YTJhMzFmMWYwMmUxZDE4MmI5ZDRlZjg5Mw\",\"origin\":\"https://wallet.example.com\",\"crossOrigin\":false}",
+      "signatureHex": "3046022100bb3c7a41accceea8d519714d1956118f1a941afacdabcb916084762b34086ca102210087ae2d8ad440737095e8bef2722069418bcbbf0f7c3beadb5c4ebf09b3833a7a",
+      "passkeyPublicKeyUncompressed": "040b336834c05a8fea89b700d0a1c4f6cefc64ddb401471c10d4ebd2f9af7c1e19642ad310093b90c144b886d34c90fb02d1a947f5bbb7354f77bb77fa1752c6d8",
+      "stampHeaderName": "X-Stamp-Webauthn",
+      "stampHeaderValue": "{\"authenticatorData\":\"7KGrVqR7FjESIOTYbmA0i0kvfLRolSkOF25wNZdC5BwFAAAAAA\",\"clientDataJson\":\"eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiTVRSa1pEQmlOV1F5T1dVNU1tVmlOVFppTmpoaU5HWTNOakpoT1dSak1qUTFOalk1TXpVMllUSmhNekZtTVdZd01tVXhaREU0TW1JNVpEUmxaamc1TXciLCJvcmlnaW4iOiJodHRwczovL3dhbGxldC5leGFtcGxlLmNvbSIsImNyb3NzT3JpZ2luIjpmYWxzZX0\",\"credentialId\":\"NZpw15Y1hNc7GSU4Kj7baw\",\"signature\":\"MEYCIQC7PHpBrMzuqNUZcU0ZVhGPGpQa-s2ry5FghHYrNAhsoQIhAIeuLYrUQHNwlei-8nIgaUGLy78PfDvq21xOvwmzgzp6\"}"
+    }
+  ]
+}

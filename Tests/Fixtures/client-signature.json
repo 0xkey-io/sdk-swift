@@ -1,0 +1,101 @@
+{
+  "_meta": {
+    "generator": "Scripts/vectors/gen-fixtures.mjs",
+    "generatorCommand": "node Scripts/vectors/gen-fixtures.mjs <outDir>",
+    "sdk_js_commit": "850ef7ef68287d481655b39ab555f181abdc54f8",
+    "generatedAt": "2026-11-19T20:56:08.789Z",
+    "fixture": "client-signature"
+  },
+  "key": {
+    "privateKey": "ccd552e947469a77134e6d0aaa56f05635d5ba2ea249833505e4f036aab043ec",
+    "publicKey": "02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5",
+    "publicKeyUncompressed": "04af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d57b66a411a7ffa76d79d7d6691e53b8e3850d0aa365c95d61d2aaec130b5c6926"
+  },
+  "verificationToken": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InZ0LWZpeHR1cmUtMSIsInB1YmxpY19rZXkiOiIwMmFmM2Y3OGU0YjYwOThiZmUyNmYyNzZlZWZhNWNjMDA5ZTJiNmQ4NWMwNTEwZjAyOWE3ODQwZmFjMmNjN2Y5ZDUiLCJjb250YWN0IjoiYWxpY2VAZXhhbXBsZS5vcmciLCJ2ZXJpZmljYXRpb25fdHlwZSI6Ik9UUF9UWVBFX0VNQUlMIn0.sig",
+  "signupCases": [
+    {
+      "label": "email-empty-arrays",
+      "input": {
+        "email": "alice@example.org",
+        "apiKeys": [],
+        "authenticators": [],
+        "oauthProviders": []
+      },
+      "message": "{\"signup\":{\"apiKeys\":[],\"authenticators\":[],\"oauthProviders\":[],\"email\":\"alice@example.org\"},\"tokenId\":\"vt-fixture-1\",\"type\":\"USAGE_TYPE_SIGNUP\"}",
+      "publicKey": "02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5"
+    },
+    {
+      "label": "phone-full",
+      "input": {
+        "phoneNumber": "+15550001",
+        "apiKeys": [
+          {
+            "apiKeyName": "k\"1",
+            "publicKey": "02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5",
+            "curveType": "API_KEY_CURVE_P256",
+            "expirationSeconds": "60"
+          },
+          {
+            "apiKeyName": "k2",
+            "publicKey": "02bb",
+            "curveType": "API_KEY_CURVE_P256"
+          }
+        ],
+        "authenticators": [
+          {
+            "authenticatorName": "pk/1",
+            "challenge": "Y2hhbA",
+            "attestation": {
+              "credentialId": "Y3JlZA",
+              "clientDataJson": "e30",
+              "attestationObject": "o2N",
+              "transports": [
+                "AUTHENTICATOR_TRANSPORT_INTERNAL",
+                "AUTHENTICATOR_TRANSPORT_HYBRID"
+              ]
+            }
+          }
+        ],
+        "oauthProviders": [
+          {
+            "providerName": "Apple",
+            "oidcToken": "id.tok.en"
+          }
+        ]
+      },
+      "message": "{\"signup\":{\"apiKeys\":[{\"apiKeyName\":\"k\\\"1\",\"publicKey\":\"02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5\",\"curveType\":\"API_KEY_CURVE_P256\",\"expirationSeconds\":\"60\"},{\"apiKeyName\":\"k2\",\"publicKey\":\"02bb\",\"curveType\":\"API_KEY_CURVE_P256\"}],\"authenticators\":[{\"authenticatorName\":\"pk/1\",\"challenge\":\"Y2hhbA\",\"attestation\":{\"credentialId\":\"Y3JlZA\",\"clientDataJson\":\"e30\",\"attestationObject\":\"o2N\",\"transports\":[\"AUTHENTICATOR_TRANSPORT_INTERNAL\",\"AUTHENTICATOR_TRANSPORT_HYBRID\"]}}],\"oauthProviders\":[{\"providerName\":\"Apple\",\"oidcToken\":\"id.tok.en\"}],\"phoneNumber\":\"+15550001\"},\"tokenId\":\"vt-fixture-1\",\"type\":\"USAGE_TYPE_SIGNUP\"}",
+      "publicKey": "02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5"
+    }
+  ],
+  "loginCases": [
+    {
+      "label": "token-key",
+      "input": {},
+      "message": "{\"login\":{\"publicKey\":\"02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5\"},\"tokenId\":\"vt-fixture-1\",\"type\":\"USAGE_TYPE_LOGIN\"}",
+      "publicKey": "02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5"
+    },
+    {
+      "label": "session-key",
+      "input": {
+        "sessionPublicKey": "033c98f300ec0cc7057b96b070ae7ed3633012e4c5bd833807b2f1e8a26af0a249"
+      },
+      "message": "{\"login\":{\"publicKey\":\"033c98f300ec0cc7057b96b070ae7ed3633012e4c5bd833807b2f1e8a26af0a249\"},\"tokenId\":\"vt-fixture-1\",\"type\":\"USAGE_TYPE_LOGIN\"}",
+      "publicKey": "02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5"
+    }
+  ],
+  "attested": {
+    "payload": "{\"parameters\":{\"publicKey\":\"02aa\"},\"organizationId\":\"o\",\"timestampMs\":\"1\",\"type\":\"ACTIVITY_TYPE_STAMP_LOGIN\"}",
+    "stampHeaderName": "X-Stamp-Attested",
+    "stampHeaderValue": "eyJwdWJsaWNLZXlBdHRlc3RhdGlvbiI6ImV5SmhiR2NpT2lKRlV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpwWkNJNkluWjBMV1pwZUhSMWNtVXRNU0lzSW5CMVlteHBZMTlyWlhraU9pSXdNbUZtTTJZM09HVTBZall3T1RoaVptVXlObVl5TnpabFpXWmhOV05qTURBNVpUSmlObVE0TldNd05URXdaakF5T1dFM09EUXdabUZqTW1Oak4yWTVaRFVpTENKamIyNTBZV04wSWpvaVlXeHBZMlZBWlhoaGJYQnNaUzV2Y21jaUxDSjJaWEpwWm1sallYUnBiMjVmZEhsd1pTSTZJazlVVUY5VVdWQkZYMFZOUVVsTUluMC5zaWciLCJzY2hlbWUiOiJTVEFNUF9BVFRFU1RFRF9TQ0hFTUVfUDI1Nl9WRVJJRklDQVRJT05fVE9LRU4iLCJwdWJsaWNLZXkiOiIwMmFmM2Y3OGU0YjYwOThiZmUyNmYyNzZlZWZhNWNjMDA5ZTJiNmQ4NWMwNTEwZjAyOWE3ODQwZmFjMmNjN2Y5ZDUiLCJzaWduYXR1cmUiOiIzMDQ1MDIyMTAwY2U1YjkxMjI2MjIzMjg1MjMzZDUyOGUyOWEzYzIzZDkwMmUwMWQ4NzlkNzhlZGM1NjlkMzMxM2JmNGEwYjhjMzAyMjAzMDRiZjZhNWJhNTNjZWM0MjQyYTQ1ZDlmZTlkMTIxZjZmODQxZWRhNzFjZmFiYWFkYjI2ZTkwMjE2YjYyMzFkIn0",
+    "decoded": {
+      "publicKeyAttestation": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InZ0LWZpeHR1cmUtMSIsInB1YmxpY19rZXkiOiIwMmFmM2Y3OGU0YjYwOThiZmUyNmYyNzZlZWZhNWNjMDA5ZTJiNmQ4NWMwNTEwZjAyOWE3ODQwZmFjMmNjN2Y5ZDUiLCJjb250YWN0IjoiYWxpY2VAZXhhbXBsZS5vcmciLCJ2ZXJpZmljYXRpb25fdHlwZSI6Ik9UUF9UWVBFX0VNQUlMIn0.sig",
+      "scheme": "STAMP_ATTESTED_SCHEME_P256_VERIFICATION_TOKEN",
+      "publicKey": "02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5",
+      "signature": "3045022100ce5b91226223285233d528e29a3c23d902e01d879d78edc569d3313bf4a0b8c30220304bf6a5ba53cec4242a45d9fe9d121f6f841eda71cfabaadb26e90216b6231d"
+    }
+  },
+  "nonce": {
+    "publicKey": "02af3f78e4b6098bfe26f276eefa5cc009e2b6d85c0510f029a7840fac2cc7f9d5",
+    "expected": "92f0f01e339fffed34ea72f9aac5de99d4cd6183f0e11ded295cd73e30215ec8"
+  }
+}

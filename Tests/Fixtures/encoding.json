@@ -1,0 +1,100 @@
+{
+  "_meta": {
+    "generator": "Scripts/vectors/gen-fixtures.mjs",
+    "generatorCommand": "node Scripts/vectors/gen-fixtures.mjs <outDir>",
+    "sdk_js_commit": "850ef7ef68287d481655b39ab555f181abdc54f8",
+    "generatedAt": "2026-11-19T20:56:08.285Z",
+    "fixture": "encoding"
+  },
+  "cases": [
+    {
+      "hex": "00",
+      "base64url": "AA",
+      "base58": "1",
+      "base58check": "1Wh4bh"
+    },
+    {
+      "hex": "0000ff",
+      "base64url": "AAD_",
+      "base58": "115Q",
+      "base58check": "11VmypLhv"
+    },
+    {
+      "hex": "deadbeef",
+      "base64url": "3q2-7w",
+      "base58": "6h8cQN",
+      "base58check": "eFGDJPketnz"
+    },
+    {
+      "hex": "ff",
+      "base64url": "_w",
+      "base58": "5Q",
+      "base58check": "VrZDWwe"
+    },
+    {
+      "hex": "000102030405060708090a0b0c0d0e0f",
+      "base64url": "AAECAwQFBgcICQoLDA0ODw",
+      "base58": "12drXXUifSrRnXLGbXg8E",
+      "base58check": "1Bhh3pU9gLXZiNDL6PEa1Gs9fh"
+    },
+    {
+      "hex": "4415c7bff1c5d7c2914a302f6e36bb99e4b555edfbe0d64e42cdf018b28ea6ff",
+      "base64url": "RBXHv_HF18KRSjAvbja7meS1Ve374NZOQs3wGLKOpv8",
+      "base58": "5amzC1Xm1ZVduiJ8mB7A12EDudZhFpgS4Mp3jqPAFqtr",
+      "base58check": "Wz9Eag1gDzRx6sZwD64obU7zghzY3J9AkD4Jq3odecEnpqSue"
+    },
+    {
+      "hex": "00008ea336dbaab07ca735253162dd3d10e56e96e9f0c7a8373955e68f2b0c546d",
+      "base64url": "AACOozbbqrB8pzUlMWLdPRDlbpbp8MeoNzlV5o8rDFRt",
+      "base58": "113B9fWLJmCH8F9aNrhyHj9RLE9HuzbeUNS3fVe2K4dgG",
+      "base58check": "11FEUfomC2d1Z1Hgh8pVNCzj4cka41YfRTt8D9csTvAtPSC2vo"
+    },
+    {
+      "hex": "675e3240909b087f92eaeb18da591fc82a40663bf11d0b7eced79a09ca559799e9ab99aa0e96c76eb728e6f791ba59ac47e0310081e34a94bb79b76df6c008f3f65d76ac4ad171e57bef32143ec68659a2d45a994598172d50fdb9d7eba4f33b2ac8f179",
+      "base64url": "Z14yQJCbCH-S6usY2lkfyCpAZjvxHQt-zteaCcpVl5npq5mqDpbHbrco5veRulmsR-AxAIHjSpS7ebdt9sAI8_ZddqxK0XHle-8yFD7Ghlmi1FqZRZgXLVD9udfrpPM7KsjxeQ",
+      "base58": "521ERKKnUsMCLLustqRD8dmup4wEqtCEnWPvHxr3z2vUUkfzEKuF8Pv9P1AprFTRg2PfBGfMqnpvZeM9JgNvGty4VfQEUvzBzFfcfQtnzTc7wKH2dgrPBeFkPbgvavBAUcs7dWT2G",
+      "base58check": "THhNDGjG8QhXZcAyBt6k4AzAAE75pzqEpLhdVz588ChZVpNrgdBqc9gc8J5KEnwDrDKmXZkmwLYhCTWZseQvmsmkj3iLovB1dHKb5DtAE1NS86SnVLzJzW78aPaabQSPeUYzM2cDxQzYGL"
+    }
+  ],
+  "stringToBase64url": [
+    {
+      "input": "",
+      "base64url": ""
+    },
+    {
+      "input": "a",
+      "base64url": "YQ"
+    },
+    {
+      "input": "ab",
+      "base64url": "YWI"
+    },
+    {
+      "input": "abc",
+      "base64url": "YWJj"
+    },
+    {
+      "input": "{\"publicKey\":\"02\",\"scheme\":\"S\",\"signature\":\"30\"}",
+      "base64url": "eyJwdWJsaWNLZXkiOiIwMiIsInNjaGVtZSI6IlMiLCJzaWduYXR1cmUiOiIzMCJ9"
+    },
+    {
+      "input": "~~~???>>>",
+      "base64url": "fn5-Pz8_Pj4-"
+    }
+  ],
+  "hexPadding": [
+    {
+      "input": "abcd",
+      "length": 4,
+      "padded": "0000abcd"
+    }
+  ],
+  "invalidHex": [
+    "",
+    "0",
+    "abc",
+    "zz",
+    "0x00",
+    "g0"
+  ]
+}

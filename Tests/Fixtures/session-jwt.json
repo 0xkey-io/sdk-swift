@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "generator": "Scripts/vectors/gen-fixtures.mjs",
+    "generatorCommand": "node Scripts/vectors/gen-fixtures.mjs <outDir>",
+    "sdk_js_commit": "850ef7ef68287d481655b39ab555f181abdc54f8",
+    "generatedAt": "2026-11-19T20:56:08.544Z",
+    "fixture": "session-jwt"
+  },
+  "notarizerPublicKey": "048e3da4ca3887a9a28667db17e25aec8658ab234d1091467ced5e2b807fe42095460e11bced87e27d3b6fbcb9f0783b391378c9849d9d15c930d9ea5055856020",
+  "jwt": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb25faWQiOiIwMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJwdWJsaWNfa2V5IjoiMDJhYSIsImV4cCI6MTc2MzUwMDAwMH0.smpasSpE2sWrTO_2ffdVtpkLdQZrAiB1C4gM4SaB3klHZ6ihOKMa3XjZsBQ3ehCUcaiKaMJkq3QQR5ictuhrtA",
+  "tamperedJwt": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9X.eyJvcmdhbml6YXRpb25faWQiOiIwMDAwMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDEiLCJwdWJsaWNfa2V5IjoiMDJhYSIsImV4cCI6MTc2MzUwMDAwMH0.smpasSpE2sWrTO_2ffdVtpkLdQZrAiB1C4gM4SaB3klHZ6ihOKMa3XjZsBQ3ehCUcaiKaMJkq3QQR5ictuhrtA"
+}

@@ -1,0 +1,15 @@
+// Build settings of the wallet demo. Placeholders only: put your own values into
+// Config/Local.xcconfig (git-ignored, see Local.xcconfig.example); it overrides this file.
+
+DEMO_BUNDLE_ID = com.example.wallet-demo
+DEVELOPMENT_TEAM =
+CODE_SIGN_STYLE = Automatic
+
+// Read at runtime from Info.plist.
+ZEROXKEY_ORGANIZATION_ID =
+ZEROXKEY_AUTH_PROXY_CONFIG_ID =
+ZEROXKEY_RP_ID = wallet.example.com
+
+PRODUCT_BUNDLE_IDENTIFIER = $(DEMO_BUNDLE_ID)
+
+#include? "Local.xcconfig"

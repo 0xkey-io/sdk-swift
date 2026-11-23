@@ -1,0 +1,44 @@
+# XcodeGen spec for the wallet demo. The generated WalletDemo.xcodeproj is committed, so
+# XcodeGen is only needed after editing this file:  cd Examples/wallet-demo && xcodegen generate
+name: WalletDemo
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+packages:
+  ZeroXKeySDK:
+    path: ../..
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  wallet-demo:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+    configFiles:
+      Debug: Config/Demo.xcconfig
+      Release: Config/Demo.xcconfig
+    dependencies:
+      - package: ZeroXKeySDK
+        product: ZeroXKey
+    settings:
+      base:
+        PRODUCT_NAME: WalletDemo
+        INFOPLIST_FILE: Sources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Sources/WalletDemo.entitlements
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_STRICT_CONCURRENCY: complete
+        # Bundle ID, team, organization, Auth Proxy config and RP ID come from
+        # Config/Demo.xcconfig, overridden by the git-ignored Config/Local.xcconfig.
+schemes:
+  wallet-demo:
+    build:
+      targets:
+        wallet-demo: all
+    run:
+      config: Debug

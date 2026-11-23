@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "generator": "Scripts/vectors/gen-fixtures.mjs",
+    "generatorCommand": "node Scripts/vectors/gen-fixtures.mjs <outDir>",
+    "sdk_js_commit": "850ef7ef68287d481655b39ab555f181abdc54f8",
+    "generatedAt": "2026-11-19T20:56:08.282Z",
+    "fixture": "constants"
+  },
+  "zeroxkey": {
+    "hpkeInfo": "0xkey_hpke",
+    "hpkeInfoSource": "sdk-js packages/crypto/src/0xkey.ts:36",
+    "otpHpkeInfo": "0xkey_hpke",
+    "otpHpkeInfoSource": "sdk-js packages/core/src/__clients__/core.ts:278",
+    "productionSignerSignPublicKey": "046d10ba0b618a5fd338a39e95e0236bb50fa323804952da886aa3768cd6b603747d606778096d5eb24644600f6f7d4a634a93043a8a5db99081068e1e03a9f201",
+    "productionNotarizerSignPublicKey": "046d10ba0b618a5fd338a39e95e0236bb50fa323804952da886aa3768cd6b603747d606778096d5eb24644600f6f7d4a634a93043a8a5db99081068e1e03a9f201",
+    "productionTlsFetcherEncryptPublicKey": "0438c11ab9353df275dd2f3b99a47c64fe37c820775e352cb2746221d9eb458bc513aedae91a662d3a57de88d708c04dd494fc99dfe3ea91b6b4e9fcbca12e78e6",
+    "productionOnRampCredentialsEncryptionPublicKey": "02336ebd7e929ef64b87c776b72540255b4c7b41579a24b1e68fb060daa873f9f6",
+    "source": "sdk-js packages/crypto/dist (re-export of internal/crypto-core/src/primitives/constants.ts:30-40)"
+  },
+  "upstream": {
+    "productionSignerSignPublicKey": "04cf288fe433cc4e1aa0ce1632feac4ea26bf2f5a09dcfe5a42c398e06898710330f0572882f4dbdf0f5304b8fc8703acd69adca9a4bbf7f5d00d20a5e364b2569",
+    "productionNotarizerSignPublicKey": "04d498aa87ac3bf982ac2b5dd9604d0074905cfbda5d62727c5a237b895e6749205e9f7cd566909c4387f6ca25c308445c60884b788560b785f4a96ac33702a469",
+    "productionTlsFetcherEncryptPublicKey": "045e899f1fcf7d12b3c8fd997a7a43bb853dd4e8d63419a8f867c70aacc1c4cf9d04848baca41f0c85ffbbd23cbf78967501cd8eca9e4a6369370a9a38f70d13c0",
+    "productionOnRampCredentialsEncryptionPublicKey": "02336ebd7e929ef64b87c776b72540255b4c7b41579a24b1e68fb060daa873f9f6",
+    "source": "upstream JS SDK packages/crypto/src/constants.ts (Apache-2.0, read for negative assertions only)"
+  }
+}
