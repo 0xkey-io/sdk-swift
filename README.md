@@ -20,12 +20,8 @@ Most apps only need the `ZeroXKey` product.
 
 ## Installation
 
-The repository is private: the GitHub account that resolves the package needs read access to
-`0xkey-io/sdk-swift` (ask your 0xkey contact to grant it).
-
-**Xcode.** Add the GitHub account under *Settings → Accounts*, then *File → Add Package
-Dependencies…*, enter `https://github.com/0xkey-io/sdk-swift.git` and choose *Up to Next Minor
-Version* from `0.1.0`.
+**Xcode.** *File → Add Package Dependencies…*, enter `https://github.com/0xkey-io/sdk-swift.git`
+and choose *Up to Next Minor Version* from `0.1.0`.
 
 **Package.swift.**
 
@@ -40,12 +36,8 @@ targets: [
 
 `git@github.com:0xkey-io/sdk-swift.git` works as well if your machine uses SSH keys for GitHub.
 
-**CI.** SwiftPM fetches with `git`, so give the build machine credentials for github.com, for
-example a fine-grained personal access token with *Contents: read* on `0xkey-io/sdk-swift`:
-
-```bash
-git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/0xkey-io/".insteadOf "https://github.com/0xkey-io/"
-```
+The repository is public, so SwiftPM resolves it on any machine (including CI) without GitHub
+credentials.
 
 ## App setup
 
