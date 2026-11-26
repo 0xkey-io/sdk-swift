@@ -78,6 +78,46 @@ struct ErrorBodyTests {
         #expect(jsonNotStatus.kind == .plainText && jsonNotStatus.message == "[1,2]")
     }
 
+    @Test func authProxyBodyReadsTextFromErrorAndKeepsStringCode() async throws {
+        // Auth Proxy shape: `error` carries the text, `code` is a string.
+        let e = try await fail(.json(["error": "OIDC token has expired", "code": "OIDC_TOKEN_EXPIRED"], status: 401))
+        #expect(e.kind == .grpcStatus && e.httpStatus == 401)
+        #expect(e.message == "OIDC token has expired")
+        #expect(e.errorCode == "OIDC_TOKEN_EXPIRED")
+        #expect(e.reason == .other("OIDC_TOKEN_EXPIRED"))
+        #expect(e.code == 16 && e.isUnauthenticated)
+        #expect(e.description.contains("OIDC_TOKEN_EXPIRED") && e.description.contains("OIDC token has expired"))
+    }
+
+    @Test func emptyMessageFallsBackToErrorAndMessageWinsWhenPresent() {
+        let empty = ZeroXKeyRequestError.parse(
+            httpStatus: 400, body: Data(#"{"message":"","error":"bad input","code":"INVALID_INPUT"}"#.utf8))
+        #expect(empty.message == "bad input" && empty.errorCode == "INVALID_INPUT" && empty.code == 3)
+
+        let both = ZeroXKeyRequestError.parse(
+            httpStatus: 400, body: Data(#"{"message":"from message","error":"from error","code":3}"#.utf8))
+        #expect(both.message == "from message" && both.code == 3 && both.errorCode == nil && both.reason == nil)
+    }
+
+    @Test func numericStringCodeIsTheGrpcCodeNotAReason() {
+        let e = ZeroXKeyRequestError.parse(httpStatus: 403, body: Data(#"{"code":"7","message":"denied"}"#.utf8))
+        #expect(e.code == 7 && e.errorCode == nil && e.reason == nil)
+    }
+
+    @Test func signedDigitsAreNotNumericCodes() {
+        for text in ["+7", "-7", "7.5", " 7", ""] {
+            let e = ZeroXKeyRequestError.parse(httpStatus: 403, body: Data(#"{"code":"\#(text)","message":"denied"}"#.utf8))
+            #expect(e.code == 7, "code is derived from HTTP 403 for \(text.debugDescription)")
+            #expect(e.errorCode == (text.isEmpty ? nil : text))
+        }
+    }
+
+    @Test func jsonWithOnlyErrorStaysPlainText() {
+        // No `code` and no `message`: not a status body, so it is kept as text as before.
+        let e = ZeroXKeyRequestError.parse(httpStatus: 401, body: Data(#"{"error":"missing token"}"#.utf8))
+        #expect(e.kind == .plainText && e.errorCode == nil && e.code == 16)
+    }
+
     @Test func rateLimitKeepsRetryAfter() async throws {
         let e = try await fail(MockResponse(status: 429, body: Data(#"{"code":8,"message":"slow down"}"#.utf8),
                                             headers: ["Content-Type": "application/json", "Retry-After": "7"]))

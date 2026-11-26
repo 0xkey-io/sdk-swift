@@ -1,5 +1,21 @@
 # Changelog
 
+## Unreleased
+
+- `ZeroXKeyRequestError.parse` now reads Auth Proxy error bodies of the form
+  `{"error":"…","code":"OIDC_…"}`:
+  - `message` falls back to `error` when it is missing or empty; `message` still wins when present.
+  - A string `code` that is not a plain number is kept in the new `errorCode` property
+    (sdk-js and sdk-kotlin use the same name). Only strings of digits count as numbers: `"7"` is the
+    gRPC code 7, while `"+7"` and `"-7"` become `errorCode`.
+  - `reason` has a new value for these bodies: when the `details` carry no `ErrorInfo` reason, a string
+    `code` is reported as `reason` — `.webAuthnRpIdNotAllowed` for `WEBAUTHN_RP_ID_NOT_ALLOWED`,
+    `.webAuthnOriginNotAllowed` for `WEBAUTHN_ORIGIN_NOT_ALLOWED`, otherwise `.other(code)`. Before, such
+    bodies had `reason == nil`. `ErrorInfo` reasons in `details` still take precedence.
+  - `code` stays the gRPC code derived from the HTTP status, and `description` shows the string code.
+  - `ZeroXKeyRequestError.init` gains an optional trailing `errorCode` parameter, so existing callers
+    still compile.
+
 ## 0.1.0 (2026-11-23)
 
 First release. Products `ZeroXKey`, `ZeroXKeyHttp`, `ZeroXKeyPasskeys`, `ZeroXKeyStamper`,
