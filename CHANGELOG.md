@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- `ZeroXKeyRequestError.parse` now reads Auth Proxy error bodies of the form
+  `{"error":"…","code":"OIDC_…"}`: `message` falls back to `error` when it is missing or empty, and a
+  string `code` is kept in the new `errorCode` property and reported as `reason` (`.other(code)`).
+  `code` stays the gRPC code derived from the HTTP status. A body with only a string `error` is now a
+  structured `.grpcStatus` error. `ZeroXKeyRequestError.init` gains an optional trailing `errorCode`
+  parameter, so existing callers still compile.
+
 ## 0.1.0 (2026-11-23)
 
 First release. Products `ZeroXKey`, `ZeroXKeyHttp`, `ZeroXKeyPasskeys`, `ZeroXKeyStamper`,
