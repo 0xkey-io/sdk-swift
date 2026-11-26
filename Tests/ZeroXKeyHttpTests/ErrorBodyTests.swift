@@ -104,12 +104,10 @@ struct ErrorBodyTests {
         #expect(e.code == 7 && e.errorCode == nil && e.reason == nil)
     }
 
-    @Test func errorOnlyBodyIsStructuredAndNonStringErrorStaysPlainText() {
+    @Test func jsonWithOnlyErrorStaysPlainText() {
+        // No `code` and no `message`: not a status body, so it is kept as text as before.
         let e = ZeroXKeyRequestError.parse(httpStatus: 401, body: Data(#"{"error":"missing token"}"#.utf8))
-        #expect(e.kind == .grpcStatus && e.message == "missing token" && e.errorCode == nil && e.code == 16)
-
-        let nested = ZeroXKeyRequestError.parse(httpStatus: 500, body: Data(#"{"error":{"x":1}}"#.utf8))
-        #expect(nested.kind == .plainText)
+        #expect(e.kind == .plainText && e.errorCode == nil && e.code == 16)
     }
 
     @Test func rateLimitKeepsRetryAfter() async throws {

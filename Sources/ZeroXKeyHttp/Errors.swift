@@ -61,7 +61,7 @@ public struct ZeroXKeyRequestError: Error, Sendable, Equatable, CustomStringConv
     public static func parse(httpStatus: Int, body: Data, retryAfter: String? = nil) -> ZeroXKeyRequestError {
         let raw = String(decoding: body, as: UTF8.self)
         if let obj = try? JSONSerialization.jsonObject(with: body) as? [String: Any],
-           obj["code"] != nil || obj["message"] != nil || obj["error"] is String {
+           obj["code"] != nil || obj["message"] != nil {
             var code = grpcCode(forHTTPStatus: httpStatus)
             var errorCode: String?
             if let number = obj["code"] as? NSNumber {
