@@ -26,9 +26,9 @@ private func c<T: Codable & Sendable>(_ type: T.Type, _ name: String, _ nullJSON
 
 enum NullDecodeCases {
     static let responseTypeCount = 153
-    static let totalCount = 553
+    static let totalCount = 543
     /// Cases with at least one optional message field (those the null / missing JSON exercises).
-    static let withMessageFieldsCount = 100
+    static let withMessageFieldsCount = 94
     static let zeroKeyCount = 793
     static let strictKeyCount = 67
 
@@ -63,14 +63,6 @@ enum NullDecodeCases {
             c(v1AppProof.self, "v1AppProof", #"{"scheme":"SIGNATURE_SCHEME_UNSPECIFIED","publicKey":"","proofPayload":"","signature":""}"#, #"{"scheme":"SIGNATURE_SCHEME_UNSPECIFIED","publicKey":"","proofPayload":"","signature":""}"#, [], ["scheme", "publicKey", "proofPayload", "signature"], []),
             c(v1ApproveActivityIntent.self, "v1ApproveActivityIntent", #"{"fingerprint":""}"#, #"{"fingerprint":""}"#, [], ["fingerprint"], []),
             c(v1Attestation.self, "v1Attestation", #"{"credentialId":"","clientDataJson":"","attestationObject":"","transports":[]}"#, #"{"credentialId":"","clientDataJson":"","attestationObject":"","transports":[]}"#, [], ["credentialId", "clientDataJson", "attestationObject", "transports"], []),
-            c(v1AuthProxySecurityAudienceGrant.self, "v1AuthProxySecurityAudienceGrant", #"{}"#, #"{}"#, []),
-            c(v1AuthProxySecurityPolicy.self, "v1AuthProxySecurityPolicy", #"{}"#, #"{}"#, []),
-            c(v1AuthProxySecurityProvider.self, "v1AuthProxySecurityProvider", #"{"key":null}"#, #"{}"#, ["key"]),
-            c(v1AuthProxySecurityProviderKey.self, "v1AuthProxySecurityProviderKey", #"{}"#, #"{}"#, []),
-            c(v1AuthProxySecurityRegistration.self, "v1AuthProxySecurityRegistration", #"{"provider":null}"#, #"{}"#, ["provider"]),
-            c(v1AuthProxySecuritySelector.self, "v1AuthProxySecuritySelector", #"{}"#, #"{}"#, []),
-            c(v1AuthProxySecurityTransition.self, "v1AuthProxySecurityTransition", #"{"expected":null,"policy":null}"#, #"{}"#, ["expected", "policy"]),
-            c(v1AuthProxySecurityTransitionV2.self, "v1AuthProxySecurityTransitionV2", #"{"expected":null,"captchaBinding":null,"readyWitness":null}"#, #"{}"#, ["expected", "captchaBinding", "readyWitness"]),
             c(v1AuthenticationMethod.self, "v1AuthenticationMethod", #"{"type":"AUTHENTICATION_TYPE_EMAIL_OTP"}"#, #"{"type":"AUTHENTICATION_TYPE_EMAIL_OTP"}"#, [], ["type"], []),
             c(v1AuthenticationMethodParams.self, "v1AuthenticationMethodParams", #"{"type":"AUTHENTICATION_TYPE_EMAIL_OTP"}"#, #"{"type":"AUTHENTICATION_TYPE_EMAIL_OTP"}"#, [], ["type"], []),
             c(v1Authenticator.self, "v1Authenticator", #"{"transports":[],"attestationType":"","aaguid":"","credentialId":"","model":"","authenticatorId":"","authenticatorName":"","credential":null,"createdAt":null,"updatedAt":null}"#, #"{"transports":[],"attestationType":"","aaguid":"","credentialId":"","model":"","authenticatorId":"","authenticatorName":""}"#, ["credential", "createdAt", "updatedAt"], ["transports", "attestationType", "aaguid", "model", "authenticatorName"], ["credentialId", "authenticatorId"]),
@@ -79,8 +71,6 @@ enum NullDecodeCases {
             c(v1AuthenticatorParamsV2.self, "v1AuthenticatorParamsV2", #"{"authenticatorName":"","challenge":"","attestation":null}"#, #"{"authenticatorName":"","challenge":""}"#, ["attestation"], ["authenticatorName", "challenge"], []),
             c(v1BootProof.self, "v1BootProof", #"{"ephemeralPublicKeyHex":"","awsAttestationDocB64":"","qosManifestB64":"","qosManifestEnvelopeB64":"","deploymentLabel":"","enclaveApp":"","owner":"","createdAt":null}"#, #"{"ephemeralPublicKeyHex":"","awsAttestationDocB64":"","qosManifestB64":"","qosManifestEnvelopeB64":"","deploymentLabel":"","enclaveApp":"","owner":""}"#, ["createdAt"], ["ephemeralPublicKeyHex", "awsAttestationDocB64", "qosManifestB64", "qosManifestEnvelopeB64", "deploymentLabel", "enclaveApp", "owner"], []),
             c(v1BootProofResponse.self, "v1BootProofResponse", #"{"bootProof":null}"#, #"{}"#, ["bootProof"]),
-            c(v1CaptchaReadyWitnessV1.self, "v1CaptchaReadyWitnessV1", #"{}"#, #"{}"#, []),
-            c(v1CaptchaResourceBindingV1.self, "v1CaptchaResourceBindingV1", #"{}"#, #"{}"#, []),
             c(v1ClientSignature.self, "v1ClientSignature", #"{"publicKey":"","scheme":"CLIENT_SIGNATURE_SCHEME_UNSPECIFIED","message":"","signature":""}"#, #"{"publicKey":"","scheme":"CLIENT_SIGNATURE_SCHEME_UNSPECIFIED","message":"","signature":""}"#, [], ["publicKey", "scheme", "message", "signature"], []),
             c(v1Config.self, "v1Config", #"{"quorum":null}"#, #"{}"#, ["quorum"]),
             c(v1CreateApiKeysIntent.self, "v1CreateApiKeysIntent", #"{"apiKeys":[],"userId":""}"#, #"{"apiKeys":[],"userId":""}"#, [], ["apiKeys", "userId"], []),
@@ -184,11 +174,6 @@ enum NullDecodeCases {
             c(v1DeleteOrganizationResult.self, "v1DeleteOrganizationResult", #"{"organizationId":""}"#, #"{"organizationId":""}"#, [], ["organizationId"], []),
             c(v1DeletePoliciesIntent.self, "v1DeletePoliciesIntent", #"{"policyIds":[]}"#, #"{"policyIds":[]}"#, [], ["policyIds"], []),
             c(v1DeletePoliciesResult.self, "v1DeletePoliciesResult", #"{"policyIds":[]}"#, #"{"policyIds":[]}"#, [], ["policyIds"], []),
-        ]
-    }
-
-    static func chunk1() -> [NullDecodeCase] {
-        [
             c(v1DeletePolicyIntent.self, "v1DeletePolicyIntent", #"{"policyId":""}"#, #"{"policyId":""}"#, [], ["policyId"], []),
             c(v1DeletePolicyResult.self, "v1DeletePolicyResult", #"{"policyId":""}"#, #"{"policyId":""}"#, [], ["policyId"], []),
             c(v1DeletePrivateKeyTagsIntent.self, "v1DeletePrivateKeyTagsIntent", #"{"privateKeyTagIds":[]}"#, #"{"privateKeyTagIds":[]}"#, [], ["privateKeyTagIds"], []),
@@ -199,6 +184,11 @@ enum NullDecodeCases {
             c(v1DeleteSmartContractInterfaceResult.self, "v1DeleteSmartContractInterfaceResult", #"{"smartContractInterfaceId":""}"#, #"{"smartContractInterfaceId":""}"#, [], ["smartContractInterfaceId"], []),
             c(v1DeleteSubOrganizationIntent.self, "v1DeleteSubOrganizationIntent", #"{}"#, #"{}"#, []),
             c(v1DeleteSubOrganizationResult.self, "v1DeleteSubOrganizationResult", #"{"subOrganizationUuid":""}"#, #"{"subOrganizationUuid":""}"#, [], ["subOrganizationUuid"], []),
+        ]
+    }
+
+    static func chunk1() -> [NullDecodeCase] {
+        [
             c(v1DeleteUserTagsIntent.self, "v1DeleteUserTagsIntent", #"{"userTagIds":[]}"#, #"{"userTagIds":[]}"#, [], ["userTagIds"], []),
             c(v1DeleteUserTagsResult.self, "v1DeleteUserTagsResult", #"{"userTagIds":[],"userIds":[]}"#, #"{"userTagIds":[],"userIds":[]}"#, [], ["userTagIds", "userIds"], []),
             c(v1DeleteUsersIntent.self, "v1DeleteUsersIntent", #"{"userIds":[]}"#, #"{"userIds":[]}"#, [], ["userIds"], []),
@@ -209,7 +199,7 @@ enum NullDecodeCases {
             c(v1DeleteWalletsResult.self, "v1DeleteWalletsResult", #"{"walletIds":[]}"#, #"{"walletIds":[]}"#, [], ["walletIds"], []),
             c(v1DeleteWebhookEndpointIntent.self, "v1DeleteWebhookEndpointIntent", #"{"endpointId":""}"#, #"{"endpointId":""}"#, [], ["endpointId"], []),
             c(v1DeleteWebhookEndpointResult.self, "v1DeleteWebhookEndpointResult", #"{"endpointId":""}"#, #"{"endpointId":""}"#, [], ["endpointId"], []),
-            c(v1DisableAuthProxyIntent.self, "v1DisableAuthProxyIntent", #"{"authProxySecurityTransition":null}"#, #"{}"#, ["authProxySecurityTransition"]),
+            c(v1DisableAuthProxyIntent.self, "v1DisableAuthProxyIntent", #"{}"#, #"{}"#, []),
             c(v1DisableAuthProxyResult.self, "v1DisableAuthProxyResult", #"{}"#, #"{}"#, []),
             c(v1DisablePrivateKeyIntent.self, "v1DisablePrivateKeyIntent", #"{"privateKeyId":""}"#, #"{"privateKeyId":""}"#, [], ["privateKeyId"], []),
             c(v1DisablePrivateKeyResult.self, "v1DisablePrivateKeyResult", #"{"privateKeyId":""}"#, #"{"privateKeyId":""}"#, [], ["privateKeyId"], []),
@@ -222,7 +212,7 @@ enum NullDecodeCases {
             c(v1EmailCustomizationParamsV2.self, "v1EmailCustomizationParamsV2", #"{}"#, #"{}"#, []),
             c(v1EmailVerifyInitResponse.self, "v1EmailVerifyInitResponse", #"{}"#, #"{}"#, []),
             c(v1EmailVerifyRedirectResponse.self, "v1EmailVerifyRedirectResponse", #"{}"#, #"{}"#, []),
-            c(v1EnableAuthProxyIntent.self, "v1EnableAuthProxyIntent", #"{"authProxySecurityTransition":null}"#, #"{}"#, ["authProxySecurityTransition"]),
+            c(v1EnableAuthProxyIntent.self, "v1EnableAuthProxyIntent", #"{}"#, #"{}"#, []),
             c(v1EnableAuthProxyResult.self, "v1EnableAuthProxyResult", #"{"userId":"","encryptedApiKey":""}"#, #"{"userId":"","encryptedApiKey":""}"#, [], ["userId", "encryptedApiKey"], []),
             c(v1EthSendRawTransactionIntent.self, "v1EthSendRawTransactionIntent", #"{"signedTransaction":"","caip2":""}"#, #"{"signedTransaction":"","caip2":""}"#, [], ["signedTransaction", "caip2"], []),
             c(v1EthSendRawTransactionResult.self, "v1EthSendRawTransactionResult", #"{"transactionHash":""}"#, #"{"transactionHash":""}"#, [], ["transactionHash"], []),
@@ -339,11 +329,6 @@ enum NullDecodeCases {
             c(v1RecoverUserResult.self, "v1RecoverUserResult", #"{"authenticatorId":[]}"#, #"{"authenticatorId":[]}"#, [], ["authenticatorId"], []),
             c(v1RejectActivityIntent.self, "v1RejectActivityIntent", #"{"fingerprint":""}"#, #"{"fingerprint":""}"#, [], ["fingerprint"], []),
             c(v1RemoveOrganizationFeatureIntent.self, "v1RemoveOrganizationFeatureIntent", #"{"name":"FEATURE_NAME_UNSPECIFIED"}"#, #"{"name":"FEATURE_NAME_UNSPECIFIED"}"#, [], ["name"], []),
-        ]
-    }
-
-    static func chunk2() -> [NullDecodeCase] {
-        [
             c(v1RemoveOrganizationFeatureResult.self, "v1RemoveOrganizationFeatureResult", #"{"features":[]}"#, #"{"features":[]}"#, [], ["features"], []),
             c(v1RequiredAuthenticationMethod.self, "v1RequiredAuthenticationMethod", #"{"any":[]}"#, #"{"any":[]}"#, [], ["any"], []),
             c(v1RequiredAuthenticationMethodParams.self, "v1RequiredAuthenticationMethodParams", #"{"any":[]}"#, #"{"any":[]}"#, [], ["any"], []),
@@ -354,6 +339,11 @@ enum NullDecodeCases {
             c(v1RootUserParamsV3.self, "v1RootUserParamsV3", #"{"userName":"","apiKeys":[],"authenticators":[],"oauthProviders":[]}"#, #"{"userName":"","apiKeys":[],"authenticators":[],"oauthProviders":[]}"#, [], ["userName", "apiKeys", "authenticators", "oauthProviders"], []),
             c(v1RootUserParamsV4.self, "v1RootUserParamsV4", #"{"userName":"","apiKeys":[],"authenticators":[],"oauthProviders":[]}"#, #"{"userName":"","apiKeys":[],"authenticators":[],"oauthProviders":[]}"#, [], ["userName", "apiKeys", "authenticators", "oauthProviders"], []),
             c(v1RootUserParamsV5.self, "v1RootUserParamsV5", #"{"userName":"","apiKeys":[],"authenticators":[],"oauthProviders":[]}"#, #"{"userName":"","apiKeys":[],"authenticators":[],"oauthProviders":[]}"#, [], ["userName", "apiKeys", "authenticators", "oauthProviders"], []),
+        ]
+    }
+
+    static func chunk2() -> [NullDecodeCase] {
+        [
             c(v1Selector.self, "v1Selector", #"{}"#, #"{}"#, []),
             c(v1SelectorV2.self, "v1SelectorV2", #"{}"#, #"{}"#, []),
             c(v1SendLoginLinkResponse.self, "v1SendLoginLinkResponse", #"{}"#, #"{}"#, []),
@@ -391,7 +381,7 @@ enum NullDecodeCases {
             c(v1UnknownRevertError.self, "v1UnknownRevertError", #"{}"#, #"{}"#, []),
             c(v1UpdateAllowedOriginsIntent.self, "v1UpdateAllowedOriginsIntent", #"{"allowedOrigins":[]}"#, #"{"allowedOrigins":[]}"#, [], ["allowedOrigins"], []),
             c(v1UpdateAllowedOriginsResult.self, "v1UpdateAllowedOriginsResult", #"{}"#, #"{}"#, []),
-            c(v1UpdateAuthProxyConfigIntent.self, "v1UpdateAuthProxyConfigIntent", #"{"emailCustomizationParams":null,"smsCustomizationParams":null,"walletKitSettings":null,"authProxySecurityTransition":null,"authProxySecurityTransitionV2":null}"#, #"{}"#, ["emailCustomizationParams", "smsCustomizationParams", "walletKitSettings", "authProxySecurityTransition", "authProxySecurityTransitionV2"]),
+            c(v1UpdateAuthProxyConfigIntent.self, "v1UpdateAuthProxyConfigIntent", #"{"emailCustomizationParams":null,"smsCustomizationParams":null,"walletKitSettings":null}"#, #"{}"#, ["emailCustomizationParams", "smsCustomizationParams", "walletKitSettings"]),
             c(v1UpdateAuthProxyConfigResult.self, "v1UpdateAuthProxyConfigResult", #"{}"#, #"{}"#, []),
             c(v1UpdateFiatOnRampCredentialIntent.self, "v1UpdateFiatOnRampCredentialIntent", #"{"fiatOnrampCredentialId":"","onrampProvider":"FIAT_ON_RAMP_PROVIDER_UNSPECIFIED","publishableApiKey":"","encryptedSecretApiKey":""}"#, #"{"fiatOnrampCredentialId":"","onrampProvider":"FIAT_ON_RAMP_PROVIDER_UNSPECIFIED","publishableApiKey":"","encryptedSecretApiKey":""}"#, [], ["fiatOnrampCredentialId", "onrampProvider", "publishableApiKey", "encryptedSecretApiKey"], []),
             c(v1UpdateFiatOnRampCredentialResult.self, "v1UpdateFiatOnRampCredentialResult", #"{"fiatOnRampCredentialId":""}"#, #"{"fiatOnRampCredentialId":""}"#, [], ["fiatOnRampCredentialId"], []),
@@ -494,11 +484,6 @@ enum NullDecodeCases {
             c(TSimulatePolicyChainResponse.self, "TSimulatePolicyChainResponse", #"{"finalDecision":"OUTCOME_UNSPECIFIED"}"#, #"{"finalDecision":"OUTCOME_UNSPECIFIED"}"#, [], ["finalDecision"], []),
             c(TGetWhoamiResponse.self, "TGetWhoamiResponse", #"{"organizationId":"","organizationName":"","userId":"","username":""}"#, #"{"organizationId":"","organizationName":"","userId":"","username":""}"#, [], ["organizationName", "username"], ["organizationId", "userId"]),
             c(TActivateBillingTierResponse.self, "TActivateBillingTierResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null},"productId":""}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""},"productId":""}"#, [], ["productId"], []),
-        ]
-    }
-
-    static func chunk3() -> [NullDecodeCase] {
-        [
             c(TApproveActivityResponse.self, "TApproveActivityResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null}}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""}}"#, []),
             c(TCreateApiKeysResponse.self, "TCreateApiKeysResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null},"apiKeyIds":[]}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""},"apiKeyIds":[]}"#, [], ["apiKeyIds"], []),
             c(TCreateAuthenticatorsResponse.self, "TCreateAuthenticatorsResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null},"authenticatorIds":[]}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""},"authenticatorIds":[]}"#, [], ["authenticatorIds"], []),
@@ -509,6 +494,11 @@ enum NullDecodeCases {
             c(TCreateOauthProvidersResponse.self, "TCreateOauthProvidersResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null},"providerIds":[]}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""},"providerIds":[]}"#, [], ["providerIds"], []),
             c(TCreateOidcProviderResponse.self, "TCreateOidcProviderResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null},"providerId":""}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""},"providerId":""}"#, [], ["providerId"], []),
             c(TCreatePoliciesResponse.self, "TCreatePoliciesResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null},"policyIds":[]}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""},"policyIds":[]}"#, [], ["policyIds"], []),
+        ]
+    }
+
+    static func chunk3() -> [NullDecodeCase] {
+        [
             c(TCreatePolicyResponse.self, "TCreatePolicyResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null},"policyId":""}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""},"policyId":""}"#, [], ["policyId"], []),
             c(TCreatePrivateKeyTagResponse.self, "TCreatePrivateKeyTagResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null},"privateKeyTagId":"","privateKeyIds":[]}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""},"privateKeyTagId":"","privateKeyIds":[]}"#, [], ["privateKeyTagId", "privateKeyIds"], []),
             c(TCreatePrivateKeysResponse.self, "TCreatePrivateKeysResponse", #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":"","intent":null,"result":null,"createdAt":null,"updatedAt":null,"failure":null},"privateKeys":[]}"#, #"{"activity":{"id":"","organizationId":"","status":"ACTIVITY_STATUS_UNSPECIFIED","type":"ACTIVITY_TYPE_UNSPECIFIED","votes":[],"fingerprint":"","canApprove":false,"canReject":false,"timestampMs":""},"privateKeys":[]}"#, [], ["privateKeys"], []),
