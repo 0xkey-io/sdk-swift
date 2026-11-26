@@ -2,10 +2,12 @@ import Foundation
 
 /// Error returned by the 0xkey API or Auth Proxy with a non-2xx status.
 ///
-/// Two body shapes are handled:
+/// Three body shapes are handled:
 /// 1. gRPC status JSON `{"code":16,"message":"…","details":[…]}` (sdk-js `ZeroXKeyRequestError`,
 ///    sdk-js `packages/core/src/__types__/error.ts`; planned gateway shape with `ErrorInfo` details).
-/// 2. Plain text, e.g. today's api-gateway 401 `Unauthorized: RP ID hash mismatch`
+/// 2. Auth Proxy JSON `{"error":"…","code":"OIDC_…"}`: the text is read from `error` when `message`
+///    is missing or empty, and the string `code` is kept as ``errorCode`` (and as ``reason``).
+/// 3. Plain text, e.g. today's api-gateway 401 `Unauthorized: RP ID hash mismatch`
 ///    written with `http.Error` (services `go/cmd/api-gateway/main.go:287-381`).
 ///    sdk-js turns those into a `ZeroXKeyHttpError` (sdk-js `packages/core/src/__clients__/response-error.ts:19-27`);
 ///    here they become a structured error with `kind == .plainText` (or `.empty` for an empty body)
@@ -39,8 +41,12 @@ public struct ZeroXKeyRequestError: Error, Sendable, Equatable, CustomStringConv
     public let details: [JSONValue]
     public let retryAfter: String?
     public let rawBody: String
+    /// String `code` of the body, for example `OIDC_TOKEN_EXPIRED` in an Auth Proxy
+    /// `{"error":"…","code":"OIDC_…"}` body. `code` is then derived from `httpStatus`.
+    public let errorCode: String?
 
-    public init(httpStatus: Int, kind: Kind, code: Int, message: String, details: [JSONValue], retryAfter: String?, rawBody: String) {
+    public init(httpStatus: Int, kind: Kind, code: Int, message: String, details: [JSONValue], retryAfter: String?, rawBody: String,
+                errorCode: String? = nil) {
         self.httpStatus = httpStatus
         self.kind = kind
         self.code = code
@@ -48,6 +54,7 @@ public struct ZeroXKeyRequestError: Error, Sendable, Equatable, CustomStringConv
         self.details = details
         self.retryAfter = retryAfter
         self.rawBody = rawBody
+        self.errorCode = errorCode
     }
 
     /// Parses an error response body.
@@ -55,15 +62,27 @@ public struct ZeroXKeyRequestError: Error, Sendable, Equatable, CustomStringConv
         let raw = String(decoding: body, as: UTF8.self)
         if let obj = try? JSONSerialization.jsonObject(with: body) as? [String: Any],
            obj["code"] != nil || obj["message"] != nil {
-            let code = (obj["code"] as? NSNumber)?.intValue ?? grpcCode(forHTTPStatus: httpStatus)
-            let message = obj["message"] as? String ?? ""
+            var code = grpcCode(forHTTPStatus: httpStatus)
+            var errorCode: String?
+            if let number = obj["code"] as? NSNumber {
+                code = number.intValue
+            } else if let string = obj["code"] as? String, !string.isEmpty {
+                // Digits only: "+7" and "-7" are not numeric codes (same rule as sdk-js and sdk-kotlin).
+                if string.utf8.allSatisfy({ $0 >= 0x30 && $0 <= 0x39 }), let numeric = Int(string) {
+                    code = numeric
+                } else {
+                    errorCode = string
+                }
+            }
+            // Auth Proxy bodies carry the text in `error`; `message` wins when it is not empty.
+            let text = (obj["message"] as? String).flatMap { $0.isEmpty ? nil : $0 } ?? obj["error"] as? String ?? ""
             var details: [JSONValue] = []
             if let d = obj["details"], let data = try? JSONSerialization.data(withJSONObject: d),
                let parsed = try? JSONDecoder().decode([JSONValue].self, from: data) {
                 details = parsed
             }
-            return ZeroXKeyRequestError(httpStatus: httpStatus, kind: .grpcStatus, code: code, message: message,
-                                        details: details, retryAfter: retryAfter, rawBody: raw)
+            return ZeroXKeyRequestError(httpStatus: httpStatus, kind: .grpcStatus, code: code, message: text,
+                                        details: details, retryAfter: retryAfter, rawBody: raw, errorCode: errorCode)
         }
         let text = raw.trimmingCharacters(in: .whitespacesAndNewlines)
         return ZeroXKeyRequestError(
@@ -89,6 +108,13 @@ public struct ZeroXKeyRequestError: Error, Sendable, Equatable, CustomStringConv
             default: return .other(r)
             }
         }
+        if let errorCode {
+            switch errorCode {
+            case "WEBAUTHN_RP_ID_NOT_ALLOWED": return .webAuthnRpIdNotAllowed
+            case "WEBAUTHN_ORIGIN_NOT_ALLOWED": return .webAuthnOriginNotAllowed
+            default: return .other(errorCode)
+            }
+        }
         if kind == .plainText, message.localizedCaseInsensitiveContains("RP ID hash mismatch") {
             return .webAuthnRpIdNotAllowed
         }
@@ -99,7 +125,7 @@ public struct ZeroXKeyRequestError: Error, Sendable, Equatable, CustomStringConv
     public var isUnauthenticated: Bool { httpStatus == 401 || code == 16 }
 
     public var description: String {
-        var s = "0xkey error \(code) (HTTP \(httpStatus)): \(message)"
+        var s = "0xkey error \(errorCode ?? String(code)) (HTTP \(httpStatus)): \(message)"
         if !details.isEmpty, let data = try? JSONEncoder().encode(details) {
             s += " (Details: \(String(decoding: data, as: UTF8.self)))"
         }
