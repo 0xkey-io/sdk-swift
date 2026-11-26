@@ -72,9 +72,9 @@ struct ManifestTests {
     }
 
     @Test func provenance() {
-        #expect(ZeroXKeyAPIManifest.publicSwaggerSHA256 == "48dabf4ea881f735220ab717de56ea810cd558392f4b55bda548b93011218c20") // gitleaks:allow
+        #expect(ZeroXKeyAPIManifest.publicSwaggerSHA256 == "7e42c12692674e8bbc594ecf458a383b18c17f48ddfeb76f549bf220247a4f49") // gitleaks:allow
         #expect(ZeroXKeyAPIManifest.authProxySwaggerSHA256 == "6b035dbbae61dfbe4533a1e24ccbe2e83ef56ccf81023a38b2ae47535c9c71fe")
-        #expect(ZeroXKeyAPIManifest.sdkJsCommit == "5e05b3ae3ae5f197160c60bc25a0ae1e74dcb931") // gitleaks:allow
+        #expect(ZeroXKeyAPIManifest.sdkJsCommit == "adbcfeaa05e43970fb2c9f8a4747d90177196a35") // gitleaks:allow
         #expect(ZeroXKeyAPIManifest.endpoints.count == 153)
         #expect(ZeroXKeyAPIManifest.endpoints.filter { $0.kind == "proxy" }.count == 13)
     }
