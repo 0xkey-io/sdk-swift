@@ -67,7 +67,12 @@ public struct ZeroXKeyRequestError: Error, Sendable, Equatable, CustomStringConv
             if let number = obj["code"] as? NSNumber {
                 code = number.intValue
             } else if let string = obj["code"] as? String, !string.isEmpty {
-                if let numeric = Int(string) { code = numeric } else { errorCode = string }
+                // Digits only: "+7" and "-7" are not numeric codes (same rule as sdk-js and sdk-kotlin).
+                if string.utf8.allSatisfy({ $0 >= 0x30 && $0 <= 0x39 }), let numeric = Int(string) {
+                    code = numeric
+                } else {
+                    errorCode = string
+                }
             }
             // Auth Proxy bodies carry the text in `error`; `message` wins when it is not empty.
             let text = (obj["message"] as? String).flatMap { $0.isEmpty ? nil : $0 } ?? obj["error"] as? String ?? ""

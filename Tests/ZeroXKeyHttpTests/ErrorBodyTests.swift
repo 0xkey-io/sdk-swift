@@ -104,6 +104,14 @@ struct ErrorBodyTests {
         #expect(e.code == 7 && e.errorCode == nil && e.reason == nil)
     }
 
+    @Test func signedDigitsAreNotNumericCodes() {
+        for text in ["+7", "-7", "7.5", " 7", ""] {
+            let e = ZeroXKeyRequestError.parse(httpStatus: 403, body: Data(#"{"code":"\#(text)","message":"denied"}"#.utf8))
+            #expect(e.code == 7, "code is derived from HTTP 403 for \(text.debugDescription)")
+            #expect(e.errorCode == (text.isEmpty ? nil : text))
+        }
+    }
+
     @Test func jsonWithOnlyErrorStaysPlainText() {
         // No `code` and no `message`: not a status body, so it is kept as text as before.
         let e = ZeroXKeyRequestError.parse(httpStatus: 401, body: Data(#"{"error":"missing token"}"#.utf8))
