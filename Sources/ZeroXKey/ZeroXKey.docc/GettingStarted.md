@@ -8,8 +8,7 @@ Add the package with Swift Package Manager (in Xcode: File > Add Package Depende
 
 ```swift
 dependencies: [
-    // The repository URL is a placeholder until the public repository exists.
-    .package(url: "https://github.com/0xkey-io/sdk-swift.git", from: "0.1.0"),
+    .package(url: "https://github.com/0xkey-io/sdk-swift.git", .upToNextMinor(from: "0.2.0")),
 ],
 targets: [
     .target(name: "App", dependencies: [.product(name: "ZeroXKey", package: "sdk-swift")]),

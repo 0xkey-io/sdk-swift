@@ -1,6 +1,23 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 (2026-11-27)
+
+Contains breaking changes to generated types (0.x: minor release) and a change in how error bodies
+are parsed. Depend on `.upToNextMinor(from: "0.2.0")` and read the two sections below before updating.
+
+### Breaking: removed generated types
+
+The generated models were regenerated from the cleaned public OpenAPI document. These public
+declarations no longer exist:
+
+- `v1ImportedRootAuthenticatorParams` and the property `CreateOrganizationIntentV2.importedRootAuthenticator`
+  (with its coding key); the field is no longer in the public OpenAPI document.
+- `v1ValidateSessionRequest` and `v1ValidateSessionResponse`.
+
+Code that references a removed name stops compiling. The SDK's own sign-in, session, wallet and
+signing APIs do not use them.
+
+### Changed: error parsing
 
 - `ZeroXKeyRequestError.parse` now reads Auth Proxy error bodies of the form
   `{"error":"…","code":"OIDC_…"}`:
