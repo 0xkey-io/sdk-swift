@@ -39,7 +39,7 @@ struct QueryRequestTests {
         #expect(req.method == "POST")
         #expect(req.url.absoluteString == "https://\(server.apiHost)/public/v1/query/whoami")
         #expect(req.header("Content-Type") == "application/json")
-        #expect(req.header("X-Client-Version") == "0xkey-swift/0.1.0")
+        #expect(req.header("X-Client-Version") == "0xkey-swift/0.2.0")
         #expect(req.bodyString == #"{"organizationId":"org-default"}"#)
         #expect(try verifyApiKeyStamp(req.header("X-Stamp"), body: req.body, expectedPublicKey: key.publicKey))
         #expect(req.header("X-Auth-Proxy-Config-ID") == nil)

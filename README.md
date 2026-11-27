@@ -5,7 +5,7 @@ wallets, per-transaction passkey signing, and wallet import that keeps existing 
 
 - iOS 17+ / macOS 14+, Xcode 16+ (Swift 6 language mode, strict concurrency)
 - No third-party dependencies
-- Current version: **0.1.0** ([CHANGELOG](CHANGELOG.md))
+- Current version: **0.2.0** ([CHANGELOG](CHANGELOG.md))
 
 | Product | Purpose |
 |---|---|
@@ -21,13 +21,13 @@ Most apps only need the `ZeroXKey` product.
 ## Installation
 
 **Xcode.** *File → Add Package Dependencies…*, enter `https://github.com/0xkey-io/sdk-swift.git`
-and choose *Up to Next Minor Version* from `0.1.0`.
+and choose *Up to Next Minor Version* from `0.2.0`.
 
 **Package.swift.**
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/0xkey-io/sdk-swift.git", .upToNextMinor(from: "0.1.0")),
+    .package(url: "https://github.com/0xkey-io/sdk-swift.git", .upToNextMinor(from: "0.2.0")),
 ],
 targets: [
     .target(name: "App", dependencies: [.product(name: "ZeroXKey", package: "sdk-swift")]),
@@ -238,10 +238,10 @@ do {
 
 ## Versions and compatibility
 
-- Releases are Git tags with semantic versions (`0.1.0`). While the major version is 0, a minor
-  release (`0.2.0`) may contain breaking changes, so depend on `.upToNextMinor(from:)`; patch
+- Releases are Git tags with semantic versions (`0.2.0`). While the major version is 0, a minor
+  release (`0.3.0`) may contain breaking changes, so depend on `.upToNextMinor(from:)`; patch
   releases are compatible. Every change is listed in [CHANGELOG.md](CHANGELOG.md).
-- 0.1.0 targets the current 0xkey public API and Auth Proxy. It works side by side with the 0xkey
+- 0.2.0 targets the current 0xkey public API and Auth Proxy. It works side by side with the 0xkey
   JS, Kotlin and Flutter SDKs on the same organization: wire formats, stamps and HPKE parameters
   are the same.
 - Requirements: iOS 17+ / macOS 14+, Xcode 16+.
